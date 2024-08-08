@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-// import { login } from '../store/slices/authSlice';
+import { useDispatch } from 'react-redux';
 import { login } from '../store/slices/authSlice';
 import { useNavigate } from 'react-router-dom';
 
@@ -17,33 +16,30 @@ const Login = ({ toggleForm }) => {
       return;
     }
     setError('');
-    console.log(email, password)
     try {
       const resultAction = await dispatch(login({ email, password }));
 
       if (login.fulfilled.match(resultAction)) {
-      navigate('/dashboard');
+        navigate('/dashboard');
       } else {
-        console.error('Login failed:', resultAction.payload);
         setError('Incorrect email or password! Please try again.');
       }
     } catch (error) {
-      console.error('Unexpected error:', error);
       setError('Unexpected error occurred. Please try again.');
     }
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-center text-gray-700">Login</h2>
+    <div className="flex justify-center min-h-screen bg-gray-100 p-4 sm:p-6 lg:p-8">
+      <div className="bg-white p-8 sm:p-10 md:p-12 lg:p-16 rounded-lg shadow-lg w-full max-w-sm sm:max-w-md lg:max-w-lg">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center text-gray-700">Login</h2>
         <div className="mb-4">
           <input
             type="email"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-3 sm:p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
         <div className="mb-6">
@@ -52,12 +48,12 @@ const Login = ({ toggleForm }) => {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-3 sm:p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
         <button
           onClick={handleLogin}
-          className="w-full p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300"
+          className="w-full p-3 sm:p-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300"
         >
           Login
         </button>

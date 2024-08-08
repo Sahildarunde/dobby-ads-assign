@@ -89,7 +89,7 @@ const Dashboard = () => {
   const renderFolders = (folders) => (
     <ul className="list-disc pl-4 space-y-2">
       {folders.map(folder => (
-        <li key={folder.id} className="flex items-center space-x-2 px-10 py-2 border border-b rounded-md justify-between hover:bg-slate-100 ">
+        <li key={folder.id} className="flex items-center space-x-2 md:px-10 px-2 py-2 border border-b rounded-md justify-between hover:bg-slate-100 ">
           <div className='flex '>
             <FolderIcon />
             <button
@@ -99,7 +99,7 @@ const Dashboard = () => {
               {folder.name}
             </button>
           </div>
-          <div className='px-6 py-2 bg-red-600 rounded-md'>
+          <div className='md:px-6 md:py-2 px-2 bg-red-600 rounded-md'>
             <button
               onClick={() => handleDeleteFolder(folder.id)}
               className="text-lg  text-white hover:text-red-800 transition-colors flex gap-2 items-center"
@@ -185,7 +185,7 @@ const Dashboard = () => {
         {selectedFolder && (
           <button
             onClick={handleBackClick}
-            className="bg-gray-200 hover:bg-gray-300 text-black px-4 py-2 rounded-lg shadow transition-colors mb-4 w-1/12"
+            className="bg-gray-200 hover:bg-gray-300 text-black px-4 py-2 rounded-lg shadow transition-colors mb-4 md:w-1/12 w-1/3"
           >
             Back
           </button>
